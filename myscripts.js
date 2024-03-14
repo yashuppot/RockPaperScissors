@@ -17,39 +17,39 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection.toUpperCase() === "ROCK") {
         switch (computerSelection) {
             case "Rock":
-                console.log("You tied! Rock ties Rock");
+                return ("You tied! Rock ties Rock");
                 break;
             case "Paper":
-                console.log("You lost! Paper beats Rock");
+                return ("You lost! Paper beats Rock");
                 break;
             case "Scissors":
-                console.log("You won! Rock beats Scissors");
+                return ("You won! Rock beats Scissors");
                 break;
         }
     }
     else if (playerSelection.toUpperCase() === "PAPER") {
         switch (computerSelection) {
             case "Rock":
-                console.log("You won! Paper beats Rock");
+                return ("You won! Paper beats Rock");
                 break;
             case "Paper":
-                console.log("You tied! Paper ties Paper");
+                return ("You tied! Paper ties Paper");
                 break;
             case "Scissors":
-                console.log("You lost! Scissors beats Paper");
+                return ("You lost! Scissors beats Paper");
                 break;
         }
     }
     else if (playerSelection.toUpperCase() === "SCISSORS") {
         switch (computerSelection) {
             case "Rock":
-                console.log("You lost! Rock beats Scissors");
+                return ("You lost! Rock beats Scissors");
                 break;
             case "Paper":
-                console.log("You won! Scissors beats Paper");
+                return ("You won! Scissors beats Paper");
                 break;
             case "Scissors":
-                console.log("You tied! Scissors ties Scissors");
+                return ("You tied! Scissors ties Scissorsplay");
                 break;
         }
     }       
