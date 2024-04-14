@@ -1,0 +1,13 @@
+.header {
+    display: flex;
+    gap: 200px;
+    background-color: lightblue;
+    border: 2px solid purple;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+.option {
+    font-weight: bold;
+}
