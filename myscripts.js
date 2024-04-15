@@ -55,37 +55,89 @@ function playRound(playerSelection, computerSelection) {
     }       
 }
 
-function playGame() {
-    let computerWins = 0;
-    let playerWins = 0;
-    let draws = 0;
-    let result;
-    let playerChoice;
-    let computerChoice;
-    for(i = 0; i < 5; i++) {
-        playerChoice = prompt("Rock, Paper, or Scissors?");
-        computerChoice = getComputerChoice();
-        result = playRound(playerChoice, computerChoice);
-        console.log(result);
-        switch (result.charAt(4)) {
-            case "t":
-                draws += 1;
-                break;
-            case "w":
-                playerWins += 1;
-                break;
-            case "l":
-                computerWins += 1;
-                break;
-        }
+let computerWins = 0;
+let playerWins = 0;
+let draws = 0;
+const info = document.querySelector("#info");
+info.textContent = '';
+
+const computerInfo = document.createElement("p");
+
+const playerInfo = document.createElement("p");
+
+
+const roundResult = document.createElement("p");
+const gameResult = document.createElement("p");
+
+const panel = document.querySelector(".header");
+
+info.append(playerInfo);
+info.append(computerInfo);
+info.append(roundResult);
+info.append(gameResult);
+
+panel.addEventListener('click', (e) => {
+    target = e.target;
+    switch(target.id) {
+        case "rock":
+            console.log(target.id);
+            result = playRound("ROCK", getComputerChoice());
+            break;
+        case "paper":
+            result = playRound("PAPER", getComputerChoice());
+            break;
+        case "scissors":
+            result = playRound("SCISSORS", getComputerChoice());
+            break;
     }
-    if (playerWins > computerWins) {
-        console.log("You Won the Game!");
+    console.log(result);
+    updateState(result);
+})
+
+function updateState(result) {
+    roundResult.textContent = result;
+    switch (result.charAt(4)) {
+        case "t":
+            draws += 1;
+            break;
+        case "w":
+            playerWins += 1;
+            break;
+        case "l":
+            computerWins += 1;
+            break;
     }
-    else if (computerWins > playerWins) {
-        console.log("You Lost the Game!");
+    computerInfo.textContent = `Computer Score: ${computerWins}$`
+    playerInfo.textContent = `Player Score: ${playerWins}`;
+    if (playerWins == 5) {
+        gameResult.textContent = "You Won the Game!"
+        playerInfo.textContent = '';
+        computerInfo.textContent = '';
+        createPlayButton();
     }
-    else{
-        console.log("You Tied the Game!")
+    else if (computerWins == 5) {
+        gameResult.textContent = "You Lost the Game!"
+        playerInfo.textContent = '';
+        computerInfo.textContent = '';
+        createPlayButton();
     }
 }
+
+
+function createPlayButton () {
+    const playButton = document.createElement("button");
+    playButton.classList.add("option");
+    playButton.textContent = "Play Game";
+    playButton.addEventListener('click', () => {
+        playerWins = 0;
+        computerWins = 0;
+        playerInfo.textContent = `Player Score: ${playerWins}`;
+        computerInfo.textContent = `Computer Score: ${computerWins}`
+        roundResult.textContent = '';
+        gameResult.textContent = '';
+        playButton.remove();
+    })
+    info.appendChild(playButton);
+}
+
+createPlayButton();

@@ -5,9 +5,19 @@
     border: 2px solid purple;
     justify-content: center;
     padding: 20px;
+    margin-bottom: 100px;
     
 }
 
 .option {
     font-weight: bold;
+}
+
+.information {
+    height : 50vw;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
